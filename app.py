@@ -30,46 +30,217 @@ OWNER_NAME = get_owner_name()
 st.markdown(
     """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
-.stApp, .stApp p, .stApp label, .stApp button, .stApp input, .stApp h1, .stApp h2, .stApp h3 {
-    font-family: 'Hind Siliguri', 'Segoe UI', sans-serif;
-}
-.stApp { background: #EEF2F4; }
-.block-container { padding-top: 1.6rem; max-width: 1050px; }
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
-[data-testid="stSidebar"] { background: #0B3B38; }
-[data-testid="stSidebar"] p, [data-testid="stSidebar"] label,
-[data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 {
-    color: #E6F0EE;
+html, body, [class*="css"], .stApp, p, span, div, label, button, input, select, textarea, h1, h2, h3, h4, h5 {
+    font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif !important;
 }
-[data-testid="stSidebar"] hr { border-color: #2B5C58; }
 
-.app-header { background: #0B3B38; color: #F2F7F6; padding: 1.3rem 1.6rem;
-    border-radius: 10px; margin-bottom: 1.2rem; }
-.app-header h1 { color: #F2F7F6; font-size: 1.9rem; margin: 0; padding: 0; font-weight: 700; }
-.app-header p { color: #B5CFCB; margin: .2rem 0 0 0; }
-
-[data-testid="stVerticalBlockBorderWrapper"] { background: #FFFFFF; border-radius: 10px; }
-[data-testid="stMetric"] { background: #F6F9FA; border: 1px solid #DCE5E8;
-    border-radius: 10px; padding: .8rem 1rem; }
-[data-testid="stMetricValue"] { color: #0B3B38; font-weight: 700; }
-
-.stButton > button, .stFormSubmitButton > button, .stDownloadButton > button {
-    border-radius: 8px; font-weight: 600; min-height: 2.6rem;
+.stApp {
+    background: linear-gradient(180deg, #F3F8F5 0%, #E8F2EC 100%) !important;
+    color: #162620 !important;
 }
-.stFormSubmitButton > button[kind="primary"], .stButton > button[kind="primary"] {
-    background: #0B6B63; border-color: #0B6B63;
+
+.block-container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 2.5rem !important;
+    max-width: 1020px !important;
 }
-.due-pill { display: inline-block; padding: .15rem .7rem; border-radius: 999px;
-    font-weight: 600; background: #FBE9E7; color: #B3261E; }
-.paid-pill { display: inline-block; padding: .15rem .7rem; border-radius: 999px;
-    font-weight: 600; background: #E3F4EA; color: #1E7B4F; }
-.section-note { color: #5C6B70; margin-top: -.4rem; }
+
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #164A32 0%, #0F3524 100%) !important;
+    border-right: 2px solid rgba(212, 160, 36, 0.30);
+}
+
+[data-testid="stSidebar"] * {
+    color: #F2F8F4 !important;
+}
+
+[data-testid="stSidebar"] hr {
+    border-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+.app-header {
+    background: linear-gradient(120deg, #1B5E3A 0%, #2E7D32 65%, #8C6D1F 100%);
+    color: #FFFFFF;
+    padding: 1.45rem 1.75rem;
+    border-radius: 14px;
+    margin-bottom: 1.35rem;
+    border: 1px solid rgba(212, 160, 36, 0.35);
+    box-shadow: 0 8px 20px rgba(22, 74, 50, 0.10);
+}
+
+.app-header h1 {
+    color: #FFFFFF !important;
+    font-size: 1.85rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.app-header p {
+    color: #F6FBF7 !important;
+    margin: 0.35rem 0 0 0;
+    font-size: 0.98rem;
+}
+
+/* কার্ডের ভেতরে সবকিছু ঠিকভাবে বসিয়ে রাখা, বাইরে যেন না যায় */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F9FCFA 100%) !important;
+    border: 1.5px solid #C8DDD0 !important;
+    border-top: 4px solid #23703B !important;
+    border-radius: 14px !important;
+    padding: 0.75rem 1rem !important;
+    box-shadow: 0 4px 14px rgba(22, 74, 50, 0.06) !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* Expander-এর আইকন লেখা যেন হেডারের ওপর না বসে */
+[data-testid="stExpander"] summary [data-testid="stIconMaterial"],
+[data-testid="stExpander"] summary .material-symbols-rounded,
+[data-testid="stExpander"] summary .material-icons {
+    font-family: 'Material Symbols Rounded', 'Material Icons' !important;
+    font-size: 1.25rem !important;
+    width: 1.25rem !important;
+    min-width: 1.25rem !important;
+    overflow: hidden !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 0.4rem !important;
+    color: #143D29 !important;
+    -webkit-text-fill-color: #143D29 !important;
+}
+
+[data-testid="stExpander"] summary {
+    display: flex !important;
+    align-items: center !important;
+    color: #143D29 !important;
+    -webkit-text-fill-color: #143D29 !important;
+    font-weight: 700 !important;
+}
+
+/* সব ইনপুট বক্স, লেখা ও প্লেসহোল্ডার একদম স্পষ্ট করার নিয়ম */
+[data-testid="stVerticalBlockBorderWrapper"] label,
+.stTextInput label,
+.stNumberInput label,
+.stSelectbox label {
+    color: #162620 !important;
+    font-weight: 600 !important;
+}
+
+input, textarea, [data-baseweb="input"] input, [data-baseweb="select"] input {
+    background-color: #FFFFFF !important;
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+    caret-color: #164A32 !important;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #6B7280 !important;
+    -webkit-text-fill-color: #6B7280 !important;
+    opacity: 1 !important;
+}
+
+[data-baseweb="input"], [data-baseweb="select"] > div {
+    background-color: #FFFFFF !important;
+    border-color: #A7C4B3 !important;
+    color: #111827 !important;
+}
+
+[data-testid="stMetric"] {
+    background: linear-gradient(135deg, #F2F9F4 0%, #FFFDF6 100%) !important;
+    border: 1px solid #C6DEC9 !important;
+    border-left: 4px solid #C8961E !important;
+    border-radius: 10px !important;
+    padding: 0.85rem 1rem !important;
+}
+
+[data-testid="stMetricValue"] {
+    color: #164A32 !important;
+    font-weight: 700 !important;
+}
+
+/* সাধারণ বাটনগুলো */
+.stButton > button {
+    border-radius: 9px !important;
+    font-weight: 600 !important;
+    min-height: 2.65rem !important;
+    background: linear-gradient(180deg, #EBF5EF 0%, #D9EAE0 100%) !important;
+    color: #144730 !important;
+    -webkit-text-fill-color: #144730 !important;
+    border: 1px solid #9EC0AC !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.stButton > button:hover {
+    background: linear-gradient(180deg, #DCEEE3 0%, #C6E0D0 100%) !important;
+    border-color: #1E6B3B !important;
+}
+
+/* View customers-এর Download বাটন: সুন্দর রঙিন লুক */
+.stDownloadButton > button {
+    border-radius: 9px !important;
+    font-weight: 700 !important;
+    min-height: 2.65rem !important;
+    background: linear-gradient(135deg, #1B6B43 0%, #268454 100%) !important;
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    border: 1px solid #145333 !important;
+    box-shadow: 0 4px 12px rgba(27, 107, 67, 0.22) !important;
+}
+
+.stDownloadButton > button:hover {
+    background: linear-gradient(135deg, #145333 0%, #1E6E45 100%) !important;
+}
+
+/* প্রাইমারি / ফর্ম সাবমিট বাটন: আগের মতো আকর্ষণীয় লালচে-গোলাপি রঙ */
+.stFormSubmitButton > button,
+button[kind="primary"] {
+    background: linear-gradient(135deg, #C92A4B 0%, #E03155 100%) !important;
+    border: 1px solid #A61E3B !important;
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    border-radius: 9px !important;
+    font-weight: 700 !important;
+    min-height: 2.65rem !important;
+    box-shadow: 0 4px 12px rgba(201, 42, 75, 0.24) !important;
+}
+
+button[kind="primary"]:hover {
+    background: linear-gradient(135deg, #AD203D 0%, #C92A4B 100%) !important;
+}
+
+/* ওভারল্যাপ / জড়িয়ে যাওয়া লেখা বা বাটন টেক্সট ঠিক রাখা */
+.stButton > button > div,
+.stDownloadButton > button > div,
+.stFormSubmitButton > button > div,
+button > div {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    line-height: 1.3 !important;
+}
+
+.section-note {
+    color: #4F635A !important;
+    margin-top: -0.25rem;
+    margin-bottom: 0.9rem;
+    font-size: 0.95rem;
+}
+
+/* সাইডবার টগল বাটনের ওপর কার্সার নিলে অপ্রয়োজনীয় লেখা/আইকন বিরক্ত না করার জন্য */
+[data-testid="collapsedControl"],
+[data-testid="stSidebarCollapseButton"] {
+    display: none !important;
+}
 </style>
 """,
     unsafe_allow_html=True,
 )
-
 
 # ---------------------------------------------------------------- database
 @contextmanager
@@ -391,7 +562,6 @@ def page_payment():
                     use_container_width=True,
                 )
 
-
 def page_total():
     with st.container(border=True):
         st.subheader("Total due (owner only)")
@@ -444,7 +614,14 @@ PAGES = {
 }
 
 with st.sidebar:
-    st.title("📒 Due Book")
+    st.markdown(
+        """
+        <div style="padding-bottom: 0.25rem;">
+            <h1 style="margin: 0; font-size: 1.65rem; color: #FFFFFF;">📒 Due Book</h1>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
     st.caption("Customer Due Management")
     st.divider()
     choice = st.radio("Menu", list(PAGES.keys()), label_visibility="collapsed")
@@ -454,6 +631,14 @@ with st.sidebar:
     except sqlite3.Error:
         st.warning("Could not read the database.")
     st.caption("Amounts are in Bangladeshi Taka (TK). Data is stored in a SQLite database.")
+    st.markdown(
+        """
+        <div style="margin-top: 0.85rem; padding-top: 0.65rem; border-top: 1px solid rgba(255, 255, 255, 0.16); font-size: 0.85rem; color: #E6F2EA;">
+            Developed by <strong>Nazmul Islam</strong> · Founder of <strong>Nazmora</strong>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 st.markdown(
     """
